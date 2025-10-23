@@ -2950,7 +2950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989565297777500406, guid: a2b9e82c1bf4df54c80d0d066e6c152b, type: 3}
       propertyPath: m_text
-      value: Credits
+      value: About
       objectReference: {fileID: 0}
     - target: {fileID: 4989565297777500406, guid: a2b9e82c1bf4df54c80d0d066e6c152b, type: 3}
       propertyPath: m_fontSize
