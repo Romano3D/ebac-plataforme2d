@@ -1463,7 +1463,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 04409c83639dfb84b9d0a208a258b99d
+    spriteID: 5c9668bdd1364cc469afb195db65e366
     layerID: 20
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -1473,7 +1473,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: f99e9da027711b84a8706ca3842f4807
+    spriteID: c37e1f2c1f1dd0b4783b1fd9a6f3a790
     layerID: 19
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -1503,7 +1503,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 8f6ef9a4240cbb14399d540d6e1a285e
+    spriteID: cc66deb616108ae4ea9734049a03d2f8
     layerID: 15
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -1533,7 +1533,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 99fdfed8c20c2b145a309eb64ef9f98f
+    spriteID: 716f25d414d18e049aad807b09a510df
     layerID: 11
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -1563,7 +1563,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: e3aee554acd579c4bb8aa2f6498678ba
+    spriteID: 4bb409a798285624eba1f57f6390980f
     layerID: 7
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
