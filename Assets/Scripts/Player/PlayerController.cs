@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     public float animationDuration = .3f;
     public Ease ease = Ease.OutBack;
 
+    [Header("Animation player")]
+    public string boolRun = "Run";
+    public Animator animator;
+
+
    // private bool _isRunnig = false;
 
     [Header("Varicoes no impacto")]
@@ -40,17 +45,39 @@ public class PlayerController : MonoBehaviour
     public void HandleMoviment()
     {
         if (Input.GetKey(KeyCode.LeftControl))
+        {
             _currentSpeed = speedRun;
+            animator.speed = 2;
+        }
         else
+        {
             _currentSpeed = speed;
+            animator.speed = 1;
+
+        }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             myRigidbody.velocity = new Vector2(-_currentSpeed, myRigidbody.velocity.y);
+            if(myRigidbody.transform.localScale.x != -1)
+            {
+                myRigidbody.transform.DOScaleX(-1, .1f);
+            }
+
+            animator.SetBool(boolRun, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigidbody.velocity = new Vector2(_currentSpeed, myRigidbody.velocity.y);
+            if (myRigidbody.transform.localScale.x != 1)
+            {
+                myRigidbody.transform.DOScaleX(1, .1f);
+            }
+            animator.SetBool(boolRun, true);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
         }
 
         if (myRigidbody.velocity.x > 0)
