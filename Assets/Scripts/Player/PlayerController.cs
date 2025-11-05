@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.transform.localScale = Vector3.one;
 
         float impactScaleY = 0.7f; // Encolhe verticalmente
-        float impactScaleX = 1.2f; // Aumenta um pouco horizotalmente
+        float impactScaleX = 1f; // Aumenta um pouco horizotalmente
         float impactDuration = 0.15f;
 
         myRigidbody.transform.DOScaleY(impactScaleY, impactDuration)
