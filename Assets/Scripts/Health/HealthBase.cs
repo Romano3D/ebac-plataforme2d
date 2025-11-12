@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class HealthBase : MonoBehaviour
 {
+    public Action OnKill;
+
     public int starLife = 10;
 
     public bool destroyOnKill = false;
@@ -15,6 +18,8 @@ public class HealthBase : MonoBehaviour
     private bool _isDead = false;
 
     [SerializeField] private FlashColor _flashColor;
+
+
 
     private void Awake()
     {
@@ -53,5 +58,6 @@ public class HealthBase : MonoBehaviour
         {
             Destroy(gameObject, delayToKill);
         }
+        OnKill?.Invoke();
     }
 }

@@ -8,6 +8,7 @@ using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
+    public HealthBase healfBase;
 
     [Header("Speed setup")]
     public Vector2 friction = new Vector2(.1f, 0);
@@ -24,10 +25,24 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation player")]
     public string boolRun = "Run";
+    public string triggerDeath = "Death";
     public Animator animator;
 
+    private void Awake()
+    {
+       if(healfBase != null)
+        {
+            healfBase.OnKill += OnPlayerKill;
+        }
+    }
+    private void OnPlayerKill()
+    {
+        healfBase.OnKill -= OnPlayerKill;
 
-   // private bool _isRunnig = false;
+        animator.SetTrigger(triggerDeath);
+    }
+
+    // private bool _isRunnig = false;
 
     [Header("Varicoes no impacto")]
     private float _lastVelocityY;
@@ -107,6 +122,11 @@ public class PlayerController : MonoBehaviour
         myRigidbody.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         myRigidbody.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
 
+    }
+
+    public void DestroyMe()
+    {
+        Destroy(gameObject);
     }
     //Detecta o momento de tocar o solo
     private void DetectImpact()
