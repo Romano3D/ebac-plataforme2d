@@ -2587,8 +2587,9 @@ GameObject:
   - component: {fileID: 711041987}
   - component: {fileID: 711041989}
   - component: {fileID: 711041988}
+  - component: {fileID: 711041990}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2633,7 +2634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X 15
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2710,6 +2711,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711041986}
   m_CullTransparentMesh: 1
+--- !u!114 &711041990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711041986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6399a7ec4c7e04ab791cc4f98d17c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 711041988}
 --- !u!4 &729449599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
@@ -6967,6 +6981,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.195788, y: 2.0516167}
   m_EdgeRadius: 0
+--- !u!1 &2052074102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4144382507321649898, guid: e5a3931953422684aa7c8f4d434da34a, type: 3}
+  m_PrefabInstance: {fileID: 6902865124591109925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2052074105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052074102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baa6e58d8fbf6b4bad7c0477b128f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2070592477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4237600383207724491, guid: e5a3931953422684aa7c8f4d434da34a, type: 3}
@@ -7403,7 +7434,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4144382507321649898, guid: e5a3931953422684aa7c8f4d434da34a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2052074105}
   m_SourcePrefab: {fileID: 100100000, guid: e5a3931953422684aa7c8f4d434da34a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
