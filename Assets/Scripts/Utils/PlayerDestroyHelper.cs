@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerDestroyHelper : MonoBehaviour
 {
-    public PlayerController player;
-
-    public void killPlayer()
+    public Player player;
+    public void KillPlayer()
     {
         player.DestroyMe();
     }

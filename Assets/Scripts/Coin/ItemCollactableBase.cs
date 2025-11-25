@@ -8,21 +8,15 @@ public class ItemCollactableBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.CompareTag(compareTag))
+        if (collision.transform.CompareTag(compareTag))
         {
             Collect();
         }
     }
-
     protected virtual void Collect()
     {
-        Debug.Log("Collect");
-        gameObject.SetActive(false);
         OnCollect();
+        gameObject.SetActive(false);
     }
-
-    protected virtual void OnCollect()
-    {
-
-    }
+    protected virtual void OnCollect() { }
 }

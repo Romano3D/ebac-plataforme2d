@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour
 
     public HealthBase healthBase;
 
-    public float timeToDestroy = 1f;
+    public float timeToDestroy = 1f; // Tempo de destruicao apos morte "Death"
 
     private void Awake()
     {
@@ -21,7 +21,6 @@ public class EnemyBase : MonoBehaviour
             healthBase.OnKill += OnEnemyKill;
         }
     }
-
     private void OnEnemyKill()
     {
         healthBase.OnKill -= OnEnemyKill;

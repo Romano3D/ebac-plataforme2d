@@ -6,7 +6,7 @@ public class AnimatorTest : MonoBehaviour
 {
     public Animator animator;
 
-    public KeyCode keyToTrigger = KeyCode.A;
+    public KeyCode keyToTrigger = KeyCode.F;
     public string triggerToPlay = "FlyBool";
 
     private void OnValidate()
