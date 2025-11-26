@@ -10,23 +10,31 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRididbody;
     public HealthBase healthBase;
 
+
+    [Header("Setup")]
+    public SOPlayerSetup soPlayerSetup;
+
+    /*[Header("Animation Setup")]
     [Header("Speed Setup")]
     public Vector2 friction = new Vector2(.1f, 0);
     public float speed;
     public float speedRun;
     public float forceJump = 2;
 
-    [Header("Animation Setup")]
     public float jumpScaleY = 1.5f;
     public float jumpScaleX = 0.8f;
     public float animationDuration = .3f;
+    public SOFloat sojumpScaleY;
+    public SOFloat sojumpScaleX;
+    public SOFloat soanimationDuration;
+
     public Ease ease = Ease.OutBack;
 
     [Header("Animation Player")]
     public string boolRun = "Run";
     public string triggerDeath = "Death";
+    public float playerSwipeDuration = .1f;*/
     public Animator animator;
-    public float playerSwipeDuration = .1f;
 
     private float _currentSpeed;
     //private bool _isRunning = false;
@@ -49,7 +57,7 @@ public class Player : MonoBehaviour
     {
         healthBase.OnKill -= OnPlayerKill;
 
-        animator.SetTrigger(triggerDeath);
+        animator.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     private void Update()
@@ -61,12 +69,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            _currentSpeed = speedRun;
+            _currentSpeed = soPlayerSetup.speedRun;
             animator.speed = 2;
         }
         else
         {
-            _currentSpeed = speed;
+            _currentSpeed = soPlayerSetup.speed;
             animator.speed = 1;
         }
 
@@ -76,9 +84,9 @@ public class Player : MonoBehaviour
             if (myRididbody.transform.localScale.x != -1)
             {
                 _direction = -1;
-                myRididbody.transform.DOScaleX(-1, playerSwipeDuration);
+                myRididbody.transform.DOScaleX(-1, soPlayerSetup.playerSwipeDuration);
             }
-            animator.SetBool(boolRun, true);
+            animator.SetBool(soPlayerSetup.boolRun, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -86,29 +94,29 @@ public class Player : MonoBehaviour
             if (myRididbody.transform.localScale.x != 1)
             {
                 _direction = 1;
-                myRididbody.transform.DOScaleX(1, playerSwipeDuration);
+                myRididbody.transform.DOScaleX(1, soPlayerSetup.playerSwipeDuration);
             }
-            animator.SetBool(boolRun, true);
+            animator.SetBool(soPlayerSetup.boolRun, true);
         }
         else
         {
-            animator.SetBool(boolRun, false);
+            animator.SetBool(soPlayerSetup.boolRun, false);
         }
 
         if (myRididbody.velocity.x > 0)
         {
-            myRididbody.velocity += friction;
+            myRididbody.velocity += soPlayerSetup.friction;
         }
         else if (myRididbody.velocity.x < 0)
         {
-            myRididbody.velocity -= friction;
+            myRididbody.velocity -= soPlayerSetup.friction;
         }
     }
     private void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myRididbody.velocity = Vector2.up * forceJump;
+            myRididbody.velocity = Vector2.up * soPlayerSetup.forceJump;
             transform.localScale = new Vector2(_direction, 1);
 
             transform.DOKill();
@@ -120,13 +128,13 @@ public class Player : MonoBehaviour
     {
         float dir = _direction;
 
-        transform.DOScaleY(jumpScaleY, animationDuration)
+        transform.DOScaleY(soPlayerSetup.jumpScaleY, soPlayerSetup.animationDuration)
             .SetLoops(2, LoopType.Yoyo)
-            .SetEase(ease);
+            .SetEase(soPlayerSetup.ease);
 
-        transform.DOScaleX(jumpScaleX * dir, animationDuration)
+        transform.DOScaleX(soPlayerSetup.jumpScaleX * dir, soPlayerSetup.animationDuration)
             .SetLoops(2, LoopType.Yoyo)
-            .SetEase(ease);
+            .SetEase(soPlayerSetup.ease);
     }
     private void OnDestroy()
     {
