@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     public HealthBase healthBase;
 
 
-    [Header("Setup")]
-    public SOPlayerSetup soPlayerSetup;
 
     /*[Header("Animation Setup")]
     [Header("Speed Setup")]
@@ -34,10 +32,16 @@ public class Player : MonoBehaviour
     public string boolRun = "Run";
     public string triggerDeath = "Death";
     public float playerSwipeDuration = .1f;*/
-    public Animator animator;
+
+    [Header("Setup")]
+    public SOPlayerSetup soPlayerSetup;
+
+    //public Animator animator;
 
     private float _currentSpeed;
     //private bool _isRunning = false;
+
+    private Animator _currentPlayer;
 
     private float _direction = 1;
 
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
+
+        _currentPlayer = Instantiate(soPlayerSetup.player, transform);
     }
     public void DestroyMe()
     {
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour
     {
         healthBase.OnKill -= OnPlayerKill;
 
-        animator.SetTrigger(soPlayerSetup.triggerDeath);
+        _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     private void Update()
@@ -70,12 +76,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             _currentSpeed = soPlayerSetup.speedRun;
-            animator.speed = 2;
+            _currentPlayer.speed = 2;
         }
         else
         {
             _currentSpeed = soPlayerSetup.speed;
-            animator.speed = 1;
+            _currentPlayer.speed = 1;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -86,7 +92,7 @@ public class Player : MonoBehaviour
                 _direction = -1;
                 myRididbody.transform.DOScaleX(-1, soPlayerSetup.playerSwipeDuration);
             }
-            animator.SetBool(soPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -96,11 +102,11 @@ public class Player : MonoBehaviour
                 _direction = 1;
                 myRididbody.transform.DOScaleX(1, soPlayerSetup.playerSwipeDuration);
             }
-            animator.SetBool(soPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
         }
         else
         {
-            animator.SetBool(soPlayerSetup.boolRun, false);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, false);
         }
 
         if (myRididbody.velocity.x > 0)
