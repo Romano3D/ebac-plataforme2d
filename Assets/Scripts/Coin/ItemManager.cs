@@ -34,7 +34,9 @@ public class ItemManager : Singleton<ItemManager>
 
     private void UpdateUI()
     {
-      uiTextcoins.text = coins.value.ToString();
-      uiTextcoinsSpecial.text = coinsSpecial.value.ToString();
+        //uiTextcoins.text = coins.value.ToString();
+        //uiTextcoinsSpecial.text = coinsSpecial.value.ToString();
+        UIInGameManager.UpdateTexCoins(coins.ToString());
+        UIInGameManager.UpdateTexCoins(coinsSpecial.ToString());
     }
 }
