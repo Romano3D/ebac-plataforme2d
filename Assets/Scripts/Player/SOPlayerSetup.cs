@@ -8,7 +8,7 @@ public class SOPlayerSetup : ScriptableObject
 {
     public Animator player;
 
-    public SOString playerName;
+    public SOString soStringName;
 
     [Header("Speed Setup")]
     public Vector2 friction = new Vector2(.1f, 0);
@@ -26,4 +26,6 @@ public class SOPlayerSetup : ScriptableObject
     public string boolRun = "Run";
     public string triggerDeath = "Death";
     public float playerSwipeDuration = .1f;
+
+    private float _direction = 1;
 }

@@ -1338,6 +1338,9 @@ MonoBehaviour:
   myRididbody: {fileID: 321538407}
   healthBase: {fileID: 321538410}
   soPlayerSetup: {fileID: 11400000, guid: e490406d85d2e4c45bec389f0d96d807, type: 2}
+  collider2D: {fileID: 0}
+  distToGround: 0
+  spaceToGround: 0.1
 --- !u!50 &321538407
 Rigidbody2D:
   serializedVersion: 4
@@ -3815,7 +3818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6037,7 +6040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectlie: {fileID: 8543084498315590327, guid: 08657a7c6bbe9c6459f0f217e12159db, type: 3}
-  positionToShoot: {fileID: 495797295}
+  positionToShoot: {fileID: 1465937693}
   timeBetweenShoot: 0.3
   playerSideReference: {fileID: 321538408}
 --- !u!4 &1465937693
