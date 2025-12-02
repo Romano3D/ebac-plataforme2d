@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class PlayerDestroyHelper : MonoBehaviour
 {
-    public Player player;
+    private Player player;
+
+    private void Awake()
+    {
+        player = GetComponentInParent<Player>();
+    }
+
     public void KillPlayer()
     {
+        if (player == null)
+        {
+            Debug.LogError("PlayerDestroyHelper: Nenhum Player encontrado no pai!");
+            return;
+        }
+
         player.DestroyMe();
     }
 }

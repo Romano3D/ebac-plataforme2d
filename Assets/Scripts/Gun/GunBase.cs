@@ -4,27 +4,44 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
-    public ProjectileBase prefabProjectlie;
+        public ProjectileBase prefabProjectlie;
+        public Transform positionToShoot;
+        public float timeBetweenShoot = 3f;
 
-    public Transform positionToShoot;
-    public float timeBetweenShoot = 3f;
-    public Transform playerSideReference;
+        public Transform playerSideReference;
+        private Coroutine _currentCoroutine;
 
-    private Coroutine _currentCoroutine;
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (playerSideReference == null)
         {
-            _currentCoroutine = StartCoroutine(StartShoot());
+            // Garante que achamos o Player real, não só o root
+            var player = GetComponentInParent<Player>();
+            if (player != null)
+            {
+                playerSideReference = player.transform;
+            }
+            else
+            {
+                Debug.LogWarning("GunBase não encontrou um Player no parent!");
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.S)) {
-            if (_currentCoroutine != null) 
-                StopCoroutine(_currentCoroutine);
     }
-}
-    IEnumerator StartShoot()
+
+    void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                _currentCoroutine = StartCoroutine(StartShoot());
+            }
+            else if (Input.GetKeyUp(KeyCode.S))
+            {
+                if (_currentCoroutine != null)
+                    StopCoroutine(_currentCoroutine);
+            }
+        }
+
+        IEnumerator StartShoot()
         {
             while (true)
             {
@@ -32,11 +49,13 @@ public class GunBase : MonoBehaviour
                 yield return new WaitForSeconds(timeBetweenShoot);
             }
         }
-public void Shoot()
-{
-        var projectile = Instantiate(prefabProjectlie);
-        projectile.transform.position = positionToShoot.position;
-        projectile.side = playerSideReference.transform.localScale.x;
 
+        public void Shoot()
+        {
+            var projectile = Instantiate(prefabProjectlie);
+            projectile.transform.position = positionToShoot.position;
+
+            // Direção correta, sem necessidade de referência no inspector
+            projectile.side = playerSideReference.transform.localScale.x;
+        }
     }
-}

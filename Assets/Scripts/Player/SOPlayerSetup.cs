@@ -27,5 +27,4 @@ public class SOPlayerSetup : ScriptableObject
     public string triggerDeath = "Death";
     public float playerSwipeDuration = .1f;
 
-    private float _direction = 1;
 }
