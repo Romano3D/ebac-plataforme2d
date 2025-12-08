@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     public Collider2D groundCheck;
     public float distToGround;
     public float spaceToGround = .1f;
+    public ParticleSystem jumpVFX;
 
 
 
@@ -85,6 +86,7 @@ public class Player : MonoBehaviour
         _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
+    private bool _isRunningVFXPlaying = false;
     private void Update()
     {
         IsGrounded();
@@ -147,7 +149,14 @@ public class Player : MonoBehaviour
 
             transform.DOKill();
             HandleScaleJump();
+            PlayJumpVFX();
         }
+    }
+
+    private void PlayJumpVFX()
+    {
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.JUMP, transform.position);
+        // if (jumpVFX != null) jumpVFX.Play();
     }
 
     private void HandleScaleJump()

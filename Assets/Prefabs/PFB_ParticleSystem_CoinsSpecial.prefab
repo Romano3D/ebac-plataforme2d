@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4216742695085487003}
   - component: {fileID: 137120682833532006}
   m_Layer: 0
-  m_Name: PFB_ParticleSystem_Coins
+  m_Name: PFB_ParticleSystem_CoinsSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2396865955007080713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.41, y: -0.67, z: 3.38}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4836,7 +4836,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6b97b605b6e4464f9ecee3eb4759e40, type: 2}
+  - {fileID: 2100000, guid: 7a3291dea0900d748becf79ef5b6f6a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
