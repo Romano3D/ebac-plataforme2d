@@ -14,6 +14,8 @@ public class EnemyBase : MonoBehaviour
 
     public float timeToDestroy = 1f; // Tempo de destruicao apos morte "Death"
 
+    public AudioSource audioSourceKill;
+
     private void Awake()
     {
         if(healthBase != null)
@@ -25,6 +27,7 @@ public class EnemyBase : MonoBehaviour
     {
         healthBase.OnKill -= OnEnemyKill;
         PlayADeathAnimation();
+        if (audioSourceKill != null) audioSourceKill.Play();
         Destroy(gameObject, timeToDestroy);
     }
     private void OnCollisionEnter2D(Collision2D collision)

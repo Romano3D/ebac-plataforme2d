@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRididbody;
     public HealthBase healthBase;
 
+    
 
 
     /*[Header("Animation Setup")]
@@ -51,7 +52,7 @@ public class Player : MonoBehaviour
     public float spaceToGround = .1f;
     public ParticleSystem jumpVFX;
 
-
+    public AudioRandomShoot jumpAudio;
 
 
 
@@ -67,8 +68,11 @@ public class Player : MonoBehaviour
         if (groundCheck != null)
         {
             distToGround = groundCheck.bounds.extents.y;
-        }
+
+        if (jumpAudio == null)
+            jumpAudio = GetComponentInChildren<AudioRandomShoot>();
     }
+}
 
     private bool IsGrounded()
     {
@@ -144,6 +148,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
+            if (jumpAudio != null)
+                jumpAudio.PlayRandom();
+
             myRididbody.velocity = Vector2.up * soPlayerSetup.forceJump;
             transform.localScale = new Vector2(_direction, 1);
 

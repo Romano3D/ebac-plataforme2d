@@ -11,20 +11,19 @@ public class GunBase : MonoBehaviour
         public Transform playerSideReference;
         private Coroutine _currentCoroutine;
 
+    public KeyCode keyCode = KeyCode.Z;
+    public AudioRandomShoot randomShoot;
+
     private void Awake()
     {
+        if (randomShoot == null)
+            randomShoot = GetComponentInChildren<AudioRandomShoot>();
+
         if (playerSideReference == null)
         {
-            // Garante que achamos o Player real, não só o root
             var player = GetComponentInParent<Player>();
             if (player != null)
-            {
                 playerSideReference = player.transform;
-            }
-            else
-            {
-                Debug.LogWarning("GunBase não encontrou um Player no parent!");
-            }
         }
     }
 
@@ -52,6 +51,8 @@ public class GunBase : MonoBehaviour
 
         public void Shoot()
         {
+        if (randomShoot != null) randomShoot.PlayRandom();
+
             var projectile = Instantiate(prefabProjectlie);
             projectile.transform.position = positionToShoot.position;
 
